@@ -43,7 +43,7 @@
         
     </body>
     <script>
-        var outputs = document.getElementById("outputs");
+        var informacoes = document.getElementById("informacoes");
         function LoadFile(filePath) 
         {
             var result = null;
@@ -85,25 +85,26 @@
             }
         }
 
-        function processElement (element)
+        function processElement (element, parent)
         {
-            var td2 = document.createElement("TD");
-            td2.innerText = element.innerText;
-            for(j = 0; j < t.childElementCount; j++)
+            var newTag = document.createElement(element.tagName);
+            newTag.innerText = element.innerText;
+            parent.appendChild(newTag);
+
+            for(j = 0; j < element.childElementCount; j++)
             {
-                tr.appendChild(td2);
-                processElement (t.children[j]);
+                processElement (element.children[j], newTag);
             }
         }
 
         function processDocData(doc) 
         {
-            var txts = doc.getElementsByTagName("html");
-            console.log(txts.length.toString());
+            var elements = doc.getElementsByTagName("html");
+            console.log(elements.length.toString());
 
-            for(i = 0; i < txts.length; i++)
+            for(i = 0; i < elements.length; i++)
             {
-                processElement (txts[i]);
+                processElement (elements[i], informacoes);
             }
         }
 
@@ -122,7 +123,7 @@
 
         var client = new XMLHttpRequest();
         client.onload = handler;
-        client.open("GET", "textos/texto2.xml");
+        client.open("GET", "HardSkills/index.xml");
         client.send();
 
         //ReadXML("textos/texto2.xml");
