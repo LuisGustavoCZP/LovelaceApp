@@ -99,7 +99,7 @@
 
         function processDocData(doc) 
         {
-            var elements = doc.getElementsByTagName("html");
+            var elements = doc.body;
             console.log(elements.length.toString());
 
             for(i = 0; i < elements.length; i++)
