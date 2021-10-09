@@ -113,12 +113,13 @@
         }
 
         function handler() {
-            if(this.status == 200 &&
-                this.responseXML != null &&
-                this.responseXML.getElementById('test').textContent) {
+            if(this.status == 200 && this.responseXML != null) 
+            {
                 // success!
                 processData(this.responseXML);
-            } else {
+            } 
+            else 
+            {
 
             }
         }
