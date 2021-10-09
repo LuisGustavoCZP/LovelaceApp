@@ -24,6 +24,7 @@ function processDocData(doc)
 
 function readHandler(evt) 
 {
+    console.log("encontrado " + evt);
     if(this.status == 200 && this.response != null) 
     {
         // success!
@@ -38,6 +39,7 @@ function readHandler(evt)
 
 function readDoc (filePath)
 {
+    console.log("procurando em '" + filePath + "'");
     var client = new XMLHttpRequest();
     client.onload = readHandler;
     client.open("GET", filePath);
