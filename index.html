@@ -8,14 +8,15 @@
         <meta property="og:url" content="https://luisgustavoczp.github.io/LovelaceApp/" />
         <meta property="og:image" content="https://luisgustavoczp.github.io/LovelaceApp/Images/lovelacelogo.jpeg" />
         <style>
-            body {background-color: white;}
-            header {background-color:cadetblue; color:white; text-align: center; padding: 5px; display: flex; justify-content:center; flex-direction:column }
+            body {background-color: cadetblue;}
+            header {background-color:darkcyan; color:white; text-align: center; padding: 5px; display: flex; justify-content:center; flex-direction:column }
             aside { display: flex; justify-content:right; }
             h1 {padding: 5px;}
             .love {color:pink}
             .lace {color:greenyellow}
             .menuopcoes {background-color:cadetblue; padding: 5px; display: flex; justify-content:space-between; }
             .titulo {background-color:black; display: flex; justify-content: center; }
+            .informacoes {background-color:white; display: flex; justify-content: center; }
         </style>
     </head>
     <body>
@@ -35,10 +36,8 @@
                 </div>
                 <h4>Repositorio de informações para turma Lovelace da AlphaEdTech.</h4>
             </header>
-            <article>
-                <table  id="outputs">
-                    
-                </table>
+            <article class="informacoes">
+
             </article>
         </main>
         
@@ -86,41 +85,38 @@
             }
         }
 
-        function processData(data) 
+        function processElement (element)
         {
-            var txts = data.getElementsByTagName("item");
-            var log = document.createElement("P");
-            log.innerText += " " + txts.length.toString();
-            outputs.appendChild(log);
-            for(i = 0; i < txts.length; i++)
+            var td2 = document.createElement("TD");
+            td2.innerText = element.innerText;
+            for(j = 0; j < t.childElementCount; j++)
             {
-                var t = txts[i];
-                var tr = document.createElement("TR");
-                outputs.appendChild(tr);
-
-                var td = document.createElement("TD");
-                td.innerText = t.getAttribute("nome");
-                tr.appendChild(td);
-
-                for(j = 0; j < t.childElementCount; j++)
-                {
-                    var t2 = t.children[j];
-                    var td2 = document.createElement("TD");
-                    td2.innerText = t2.textContent + (j==0?"/":" ") + t2.getAttribute("tipo");
-                    tr.appendChild(td2);
-                }
+                tr.appendChild(td2);
+                processElement (t.children[j]);
             }
         }
 
-        function handler() {
+        function processDocData(doc) 
+        {
+            var txts = doc.getElementsByTagName("html");
+            console.log(txts.length.toString());
+
+            for(i = 0; i < txts.length; i++)
+            {
+                processElement (txts[i]);
+            }
+        }
+
+        function handler() 
+        {
             if(this.status == 200 && this.responseXML != null) 
             {
                 // success!
                 processData(this.responseXML);
             } 
-            else 
+            else
             {
-
+                
             }
         }
 
