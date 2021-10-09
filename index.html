@@ -99,12 +99,13 @@
 
         function processDocData(doc) 
         {
-            var elements = doc.body;
-            console.log(elements.length.toString());
+            var elements = doc.getElementById("body");
+            console.log(elements.childElementCount.toString());
 
-            for(i = 0; i < elements.length; i++)
+            for(i = 0; i < elements.childElementCount; i++)
             {
-                processElement (elements[i], informacoes);
+                parent.appendChild(elements.children[i]);
+                //processElement (elements[i], informacoes);
             }
         }
 
