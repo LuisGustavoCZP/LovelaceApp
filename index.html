@@ -71,10 +71,10 @@
 
         function handler() 
         {
-            if(this.status == 200 && this.responseXML != null) 
+            if(this.status == 200 && this.response != null) 
             {
                 // success!
-                processDocData(this.responseXML);
+                processDocData(this.response);
             } 
             else
             {
