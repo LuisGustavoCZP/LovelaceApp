@@ -10,40 +10,63 @@
         <style>
             body {background-color: cadetblue;}
             header {background-color:darkcyan; color:white; text-align: center; padding: 5px; display: flex; justify-content:center; flex-direction:column }
-            aside { display: flex; justify-content:right; }
+            .submenuopcoes { display: flex; justify-content:right; }
+            .subpagemenu {background-color: darkslateblue; padding:5px; flex-shrink: 1; display: flex; justify-content:start; flex-direction:column}
+            .subpage {flex-grow: 1;}
+            main {display: flex; flex-direction:row }
             h1 {padding: 5px;}
             .love {color:pink}
             .lace {color:greenyellow}
             .menuopcoes {background-color:cadetblue; padding: 5px; display: flex; justify-content:space-between; }
             .titulo {background-color:black; display: flex; justify-content: center; }
-            .informacoes {background-color:white; display: flex; justify-content: center; }
+            .informacoes {background-color:white; display: flex; justify-content: center; flex-grow: 1; }
+            
         </style>
     </head>
     <body>
         <nav class="menuopcoes">
             <button>Home</button>
-            <aside>
+            <aside class="submenuopcoes">
                 <button>Equipe</button>
                 <button>Contato</button>
             </aside>
         </nav>
+        <header>
+            <div class="titulo">
+                <img src="Images/lovelacelogo.png" height="100px" />
+                <h1><span class="love">Love</span><span class="lace">lace</span>: Gitionário</h1>
+                <img src="Images/logo-alpha-edtech.png" height="100px" />
+            </div>
+            <h4>Repositorio de informações para turma Lovelace da AlphaEdTech.</h4>
+        </header>
         <main>
-            <header>
-                <div class="titulo">
-                    <img src="Images/lovelacelogo.png" height="100px" />
-                    <h1><span class="love">Love</span><span class="lace">lace</span>: Gitionário</h1>
-                    <img src="Images/logo-alpha-edtech.png" height="100px" />
-                </div>
-                <h4>Repositorio de informações para turma Lovelace da AlphaEdTech.</h4>
-            </header>
+            <aside class="subpagemenu">
+                <h4 style="background-color: blueviolet; margin: 0px;">Indice</h4>
+                <ol style="background-color:cornflowerblue; margin: 0px; padding-left: 20px;">
+                    <li><button onclick="onTrilhas()">Trilhas</button></li>
+                    <li><button onclick="onHardSkills()">HardSkills</button></li>
+                    <li><button onclick="onSoftSkills()">SoftSkills</button></li>
+                </ol>
+            </aside>
             <article class="informacoes">
-
+                <iframe class="subpage" id="subpage" src="Pages/trilhas.html"></iframe>
             </article>
         </main>
         
     </body>
-    <script src="docrequest.js">
-        var informacoes = document.getElementById("informacoes");
-        readDoc("Pages/HardSkills/index.html");
+    <script>
+        var subPage = document.getElementById("subpage");
+        function onTrilhas ()
+        {
+            subPage.setAttribute("src", "Pages/trilhas.html");
+        }
+        function onHardSkills ()
+        {
+            subPage.setAttribute("src", "Pages/HardSkills/index.html");
+        }
+        function onSoftSkills ()
+        {
+            subPage.setAttribute("src", "Pages/SoftSkills/index.html");
+        }
     </script>
 </html>
