@@ -39,7 +39,7 @@ function readHandler(evt)
 function readDoc (filePath)
 {
     var client = new XMLHttpRequest();
-    client.onload = handler;
+    client.onload = readHandler;
     client.open("GET", filePath);
     client.send();
 }
