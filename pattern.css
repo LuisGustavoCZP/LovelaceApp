@@ -27,6 +27,7 @@ h1 {padding: 5px;}
     background-color:cadetblue; 
     padding: 5px; display: flex; 
     justify-content:space-between; }
+
 .titulo 
 {
     background-color:black; 
@@ -35,7 +36,16 @@ h1 {padding: 5px;}
     justify-content: center;
     flex-direction: row;
     text-align: center;
+    padding: 5px;
+    margin: 0px;
 }
+
+.titulo.sub 
+{
+    background-color:yellowgreen; 
+    color:deeppink;
+}
+
 .informacoes 
 {
     background-color:white; 
@@ -45,8 +55,12 @@ h1 {padding: 5px;}
 }
 .linkbutton 
 {
-    background-color: pink; 
-    border: 1px; 
+    color:black;
+    font-weight: bold;
+    text-decoration:none;
+    background-color:pink; 
+    border: 5px;
+    border-color: yellowgreen;
     display:flex; 
     text-align: center; 
     flex-direction: column;
@@ -54,4 +68,25 @@ h1 {padding: 5px;}
     margin: 5px;
     padding: 10px;
     flex-grow: 1;
+    font-size: 22px;
+}
+
+.linkbutton:hover 
+{
+    color:greenyellow;
+    background-color:rgb(250, 153, 171); 
+}
+
+.linkbutton.quad 
+{
+    min-width: 50px; 
+    min-height: 80px;
+    font-size: 22px;
+}
+.subpageMenu 
+{
+    display:flex;
+    justify-content: center;
+    background-color:darkgray;
+    flex-wrap: wrap;
 }
