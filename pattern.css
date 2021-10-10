@@ -1,0 +1,57 @@
+body {background-color: cadetblue;}
+.mainheader 
+{
+    background-color:darkcyan; 
+    color:white; text-align: center; 
+    padding: 5px; display: flex; 
+    justify-content:center; flex-direction:column 
+}
+.subheader 
+{
+    background-color:black; 
+    color:white; 
+    display: flex; 
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.submenuopcoes { display: flex; justify-content:right; }
+.subpage {display:flex; flex-grow: 1;}
+main {display: flex; flex-direction:row }
+h1 {padding: 5px;}
+.citacao {color: pink;}
+.autor {color: yellowgreen}
+.love {color:pink}
+.lace {color:greenyellow}
+.menuopcoes {
+    background-color:cadetblue; 
+    padding: 5px; display: flex; 
+    justify-content:space-between; }
+.titulo 
+{
+    background-color:black; 
+    color:white; 
+    display: flex; 
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+}
+.informacoes 
+{
+    background-color:white; 
+    display: flex; 
+    justify-content: center; 
+    flex-grow: 1; 
+}
+.linkbutton 
+{
+    background-color: pink; 
+    border: 1px; 
+    display:flex; 
+    text-align: center; 
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px;
+    padding: 10px;
+    flex-grow: 1;
+}

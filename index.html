@@ -7,21 +7,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://luisgustavoczp.github.io/LovelaceApp/" />
         <meta property="og:image" content="https://luisgustavoczp.github.io/LovelaceApp/images/lovelacelogo.png" />
-        <style>
-            body {background-color: cadetblue;}
-            header {background-color:darkcyan; color:white; text-align: center; padding: 5px; display: flex; justify-content:center; flex-direction:column }
-            .submenuopcoes { display: flex; justify-content:right; }
-            .subpagemenu {background-color: darkcyan; padding:5px; flex-shrink: 1; display: flex; justify-content:start; flex-direction:column}
-            .subpage {flex-grow: 1;}
-            main {display: flex; flex-direction:row }
-            h1 {padding: 5px;}
-            .love {color:pink}
-            .lace {color:greenyellow}
-            .menuopcoes {background-color:cadetblue; padding: 5px; display: flex; justify-content:space-between; }
-            .titulo {background-color:black; display: flex; justify-content: center; }
-            .informacoes {background-color:white; display: flex; justify-content: center; flex-grow: 1; }
-            
-        </style>
+        <link rel="stylesheet" href="pattern.css">
     </head>
     <body>
         <nav class="menuopcoes">
@@ -31,7 +17,7 @@
                 <button>Contato</button>
             </aside>
         </nav>
-        <header>
+        <header class="mainheader">
             <div class="titulo">
                 <img src="images/lovelacelogo.png" height="100px" />
                 <h1><span class="love">Love</span><span class="lace">lace</span>: Gitionário</h1>
@@ -40,19 +26,13 @@
             <h4>Repositorio de informações para turma Lovelace da AlphaEdTech.</h4>
         </header>
         <main>
-            <aside class="subpagemenu">
-                <h4 style="background-color: pink; margin: 0px;">Indice</h4>
-                <ol style="background-color:greenyellow; margin: 0px; padding-left: 20px;">
-                    <li><a href="pages/trilhas.html" target="subpage">Trilhas</a></li>
-                    <li><button onclick="onHardSkills()">HardSkills</button></li>
-                    <li><button onclick="onSoftSkills()">SoftSkills</button></li>
-                </ol>
-            </aside>
             <article class="informacoes">
-                <iframe name="subpage" class="subpage" id="subpage" src="pages/trilhas.html"></iframe>
+                <iframe name="subpage" frameBorder="0" class="subpage" id="subpage" src="pages/trilhas.html" onload="onFrameLoad()" ></iframe>
             </article>
         </main>
-        
+        <aside>
+            <iframe src="https://open.spotify.com/embed/playlist/7K3scENpOi7ZPZUHfnfic3?theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </aside>
     </body>
     <script>
         var subPage = document.getElementById("subpage");
@@ -67,6 +47,13 @@
         function onSoftSkills ()
         {
             subPage.setAttribute("src", "pages/softskills/index.html");
+        }
+        function onFrameLoad()
+        {
+            subPage.style.height = "420px";
+            //subPage.contentWindow.document.body.style.height = "700px";
+            //subpage.contentWindow.document.body.scrollHeight
+            //subPage.style.height = subPage.contentWindow.document.body.scrollHeight + 'px';
         }
     </script>
 </html>

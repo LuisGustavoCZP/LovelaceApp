@@ -6,17 +6,17 @@
             body {display:flex; flex-direction:column;}
             tr {text-align:center;}
             h3 {text-align:center;}
-            table {background-color:darkgray;}
-            td {background-color: pink; border: 1px;}
+            .lista {background-color:darkgray; display: flex; flex-direction: row; justify-content: center; }
         </style>
+        <link rel="stylesheet" href="./../pattern.css">
     </head>
     <body>
-        <h3>Trilhas</h3>
-        <table>
-            <tr>
-                <td><a href="./hardskills/index.html" target="subpage">HardSkills</a></li>
-                <td><a href="./softskills/index.html" target="subpage">SoftSkills</a></li>
-            </tr>
-        </table>
+        <header class="mainheader">
+            <h3 class="lace">Trilhas</h3>
+        </header>
+        <section class="lista">
+            <a class="linkbutton" name="gohardskills" href="./hardskills/index.html" target="subpage">HardSkills</a>
+            <a class="linkbutton" name="gosoftskills" href="./softskills/index.html" target="subpage">SoftSkills</a>
+        </section>
     </body>
 </html>
