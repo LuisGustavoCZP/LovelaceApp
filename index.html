@@ -27,7 +27,10 @@
         </header>
         <main>
             <article class="informacoes">
-                <iframe name="subpage" frameBorder="0" class="subpage" id="subpage" src="pages/trilhas.html" ></iframe>
+                <header class="subpageMenu">
+                    <a id="back" class="linkbutton" href="" target="subpage">Trilhas</a>
+                </header>
+                <iframe name="subpage" frameBorder="0" class="subpage" id="subpage" src="pages/" ></iframe>
             </article>
         </main>
         <aside>
@@ -38,14 +41,18 @@
         var subPage = document.getElementById("subpage");
         subPage.onload = onFrameLoad;
         subPage.onchange = onFrameChange;
-
+        var backPage = document.getElementById("back");
+        var pathBack = "pages/";
+        backPage.setAttribute("href", pathBack);
+        
         function onBack ()
         {
-            subPage.setAttribute("src", "pages/trilhas.html");
+            subPage.setAttribute("href", pathBack);
         }
         function onFrameChange (evt) 
         {
-
+            backPage.setAttribute("href", pathBack);
+            pathBack = evt.target.src;
         }
         function onFrameLoad()
         {
