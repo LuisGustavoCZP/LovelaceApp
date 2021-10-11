@@ -4,9 +4,11 @@
         <meta charset="UTF-8">
         <title>Lovelace Gitionario</title>
         <meta property="og:title" content="Lovelace Gitionario" />
+        <meta property="description" content="" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://luisgustavoczp.github.io/LovelaceApp/" />
         <meta property="og:image" content="https://luisgustavoczp.github.io/LovelaceApp/images/lovelacelogo.png" />
+        
         <link rel="stylesheet" href="pattern.css">
 
     </head>
@@ -28,10 +30,16 @@
         </header>
         <main>
             <article class="informacoes">
-                <header class="subpageMenu">
-                    <a id="back" class="linkbutton" href="" target="subpage">Trilhas</a>
+                <header id="backslot" class="subpageMenu">
+                    <a id="back" class="linkbutton" href="" target="subpage">Voltar</a>
                 </header>
-                <iframe name="subpage" frameBorder="0" class="subpage" id="subpage" src="pages/index.html" onload="onFrameLoad();" ></iframe>
+                <header class="subheader">
+                    <h1 id="titulo" class="lace"></h1>
+                    <p id="description"></p>    
+                    <h5 id="citacao" class="citacao"></h5>
+                    <h6 id="autor" class="autor"></h6>
+                </header>
+                <iframe name="subpage" frameBorder="0" class="subpage" id="subpage" src="trilhas" onload="onFrameLoad();" ></iframe>
             </article>
         </main>
         <aside>
@@ -39,9 +47,16 @@
         </aside>
 
         <script type="text/javascript" language="javascript">
-            var pathBack = "pages/index.html";
+            var pathBack = "trilhas";
             var subPage = document.getElementById("subpage");    
             var backPage = document.getElementById("back");
+            var backSlot = document.getElementById("backslot");
+
+            var titulo = document.getElementById("titulo");    
+            var description = document.getElementById("description");
+            var citacao = document.getElementById("citacao");
+            var autor = document.getElementById("autor");
+
             backPage.setAttribute("href", pathBack);
             function onBack ()
             {
@@ -55,8 +70,38 @@
                 var currentFrame = innerDoc.location.href;
                 var ards = new URL (currentFrame);
                 pathBack = ards.pathname;
+                var nameBack = pathBack;
+                var isfolder = pathBack.endsWith("/");
+                var ishtml = pathBack.endsWith(".html");
+                if(isfolder || ishtml) 
+                {
+                    var id1 = pathBack.lastIndexOf("/");
+                    pathBack = pathBack.slice(0, id1-1);
+                }
+
+                var id = pathBack.lastIndexOf("/");
+                pathBack = pathBack.slice(0, id);
+
+                id = pathBack.lastIndexOf("/");
+                nameBack = pathBack.slice(id+1);
+                //nameBack = nameBack.toLocaleUpperCase([nameBack.charAt(0)]);
+                nameBack = nameBack.substr(0, 1).toUpperCase() + nameBack.substr(1);
+                if(!pathBack.includes("/"))
+                {
+                    backPage.remove();
+                } else 
+                {
+                    backSlot.appendChild(backPage);
+                }
                 backPage.setAttribute("href", pathBack);
-                console.log("carregou " + pathBack + " \n " + subPage.src + "\n" + ards.href);
+                //backPage.textContent = nameBack;
+                
+                titulo.textContent = innerDoc.title;
+                description.textContent = innerDoc.head.querySelector('meta[name="description"]')?.content;
+                var autorfrase = innerDoc.head.querySelector('meta[name="autor"]')?.content?.split(" - ");
+                citacao.textContent = autorfrase[0];
+                autor.textContent = autorfrase[1];
+                console.log("carregou " + pathBack + " \n " + subPage.src + "\n" + + "\n" + frase + "\n" + autorfrase);
             }
         </script>
     </body>
