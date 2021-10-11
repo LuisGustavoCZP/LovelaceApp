@@ -27,7 +27,7 @@
         </header>
         <main>
             <article class="informacoes">
-                <iframe name="subpage" frameBorder="0" class="subpage" id="subpage" src="pages/trilhas.html" onload="onFrameLoad()" ></iframe>
+                <iframe name="subpage" frameBorder="0" class="subpage" id="subpage" src="pages/trilhas.html" ></iframe>
             </article>
         </main>
         <aside>
@@ -36,24 +36,21 @@
     </body>
     <script>
         var subPage = document.getElementById("subpage");
-        function onTrilhas ()
+        subPage.onload = onFrameLoad;
+        subPage.onchange = onFrameChange;
+
+        function onBack ()
         {
             subPage.setAttribute("src", "pages/trilhas.html");
         }
-        function onHardSkills ()
+        function onFrameChange (evt) 
         {
-            subPage.setAttribute("src", "pages/hardskills/index.html");
-        }
-        function onSoftSkills ()
-        {
-            subPage.setAttribute("src", "pages/softskills/index.html");
+
         }
         function onFrameLoad()
         {
+            
             subPage.style.height = "420px";
-            //subPage.contentWindow.document.body.style.height = "700px";
-            //subpage.contentWindow.document.body.scrollHeight
-            //subPage.style.height = subPage.contentWindow.document.body.scrollHeight + 'px';
         }
     </script>
 </html>
