@@ -8,9 +8,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://luisgustavoczp.github.io/LovelaceApp/" />
         <meta property="og:image" content="https://luisgustavoczp.github.io/LovelaceApp/images/lovelacelogo.png" />
-        
         <link rel="stylesheet" href="pattern.css">
-
     </head>
     <body>
         <nav class="menuopcoes">
@@ -39,14 +37,14 @@
                     <h5 id="citacao" class="citacao"></h5>
                     <h6 id="autor" class="autor"></h6>
                 </header>
-                <iframe name="subpage" frameBorder="0" class="subpage" id="subpage" src="trilhas" onload="onFrameLoad();" ></iframe>
+                <iframe name="subpage" frameBorder="0" class="subpage" id="subpage" src="trilhas" onload="onFrameLoad()" ></iframe>
             </article>
         </main>
         <aside>
             <iframe src="https://open.spotify.com/embed/playlist/7K3scENpOi7ZPZUHfnfic3?theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
         </aside>
 
-        <script type="text/javascript" language="javascript">
+        <script type="text/javascript" language="javascript" >
             var pathBack = "trilhas";
             var subPage = document.getElementById("subpage");    
             var backPage = document.getElementById("back");
@@ -58,6 +56,8 @@
             var autor = document.getElementById("autor");
 
             backPage.setAttribute("href", pathBack);
+            //subPage.onload = ;
+
             function onBack ()
             {
                 subPage.setAttribute("href", pathBack);
@@ -84,7 +84,6 @@
 
                 id = pathBack.lastIndexOf("/");
                 nameBack = pathBack.slice(id+1);
-                //nameBack = nameBack.toLocaleUpperCase([nameBack.charAt(0)]);
                 nameBack = nameBack.substr(0, 1).toUpperCase() + nameBack.substr(1);
                 if(!pathBack.includes("/"))
                 {
@@ -94,14 +93,18 @@
                     backSlot.appendChild(backPage);
                 }
                 backPage.setAttribute("href", pathBack);
-                //backPage.textContent = nameBack;
                 
                 titulo.textContent = innerDoc.title;
                 description.textContent = innerDoc.head.querySelector('meta[name="description"]')?.content;
-                var autorfrase = innerDoc.head.querySelector('meta[name="autor"]')?.content?.split(" - ");
-                citacao.textContent = autorfrase[0];
-                autor.textContent = autorfrase[1];
-                console.log("carregou " + pathBack + " \n " + subPage.src + "\n" + + "\n" + frase + "\n" + autorfrase);
+                var autorfrase = [""];
+                autorfrase = innerDoc.head.querySelector('meta[name="autor"]')?.content?.split(" - ");
+                if(autorfrase != undefined)
+                {
+                    citacao.textContent = autorfrase[0];
+                    autor.textContent = autorfrase[1];
+                }
+
+                console.log("carregou " + pathBack + " \n " + innerDoc.location + "\n");
             }
         </script>
     </body>
