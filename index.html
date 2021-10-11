@@ -51,12 +51,12 @@
             function onFrameLoad()
             {
                 subPage.style.height = "420px";
-                
                 var innerDoc = subPage.contentDocument || subPage.contentWindow.document;
                 var currentFrame = innerDoc.location.href;
-                pathBack = new URL (currentFrame).origin;
+                var ards = new URL (currentFrame);
+                pathBack = ards.pathname;
                 backPage.setAttribute("href", pathBack);
-                console.log("carregou " + pathBack + " - " + subPage.src);
+                console.log("carregou " + pathBack + " \n " + subPage.src + "\n" + ards.href);
             }
         </script>
     </body>
