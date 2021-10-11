@@ -85,7 +85,7 @@
                 id = pathBack.lastIndexOf("/");
                 nameBack = pathBack.slice(id+1);
                 nameBack = nameBack.substr(0, 1).toUpperCase() + nameBack.substr(1);
-                if(!pathBack.includes("/"))
+                if(!pathBack.includes("/") || pathBack.endsWith("/LovelaceApp"))
                 {
                     backPage.remove();
                 } else 
